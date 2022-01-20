@@ -16,7 +16,7 @@ function App() {
       console.log(data)
     }
     fetchTasks();
-  })
+  }, [])
 
 // Delete Task
 const deleteTask = (id) => {
