@@ -32,14 +32,18 @@ const deleteTask = (id) => {
 
 //Toggle Reminder
 const toggleReminder = (id) => {
-  
+  setTasks(tasks.map((task) => task.id === id ? 
+  {...task, reminder : !task.reminder} : task))
 }
 
   return (
     <div className="App">
       <Header />
-      {tasks.length > 0 ? <Tasks tasks={tasks} onDelete={deleteTask} /> :
-      'No Task available'}
+      {tasks.length > 0 ? 
+        (<Tasks tasks={tasks} 
+          onDelete={deleteTask}
+          onToggle={toggleReminder} />) :
+        ('No Task available')}
     </div>
   );
 }
