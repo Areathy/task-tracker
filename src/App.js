@@ -37,10 +37,15 @@ const toggleReminder = (id) => {
   {...task, reminder : !task.reminder} : task))
 }
 
+//Add Task
+const addTask = (task) => {
+  console.log(task)
+}
+
   return (
     <div className="App">
       <Header />
-      <AddTask />
+      <AddTask onAdd={addTask} />
       {tasks.length > 0 ? 
         (<Tasks tasks={tasks} 
           onDelete={deleteTask}
