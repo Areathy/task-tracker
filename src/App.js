@@ -20,7 +20,8 @@ function App() {
 
   // Fetch Task
   const fetchTasks = async () => {
-    const respond = await fetch('http://localhost:7000/tasks');
+    const respond = await fetch('http://localhost:7000/tasks',
+    {method: 'GET'});
     const data = await respond.json();
     console.log(data)
 
