@@ -10,42 +10,46 @@ function App() {
 
   // useEffect
   useEffect(() => {
-    const fetchTasks= async () => {
-      const respond = await fetch('http://localhost:7000/tasks');
-      const data = await respond.json();
-      console.log(data)
-    }
     fetchTasks();
   }, [])
 
-// Delete Task
-const deleteTask = (id) => {
-  setTasks(tasks.filter((task) => task.id !== id))
-}
+  // Fetch Task
+  const fetchTasks = async () => {
+    const respond = await fetch('http://localhost:7000/tasks');
+    const data = await respond.json();
+    console.log(data)
 
-//Toggle Reminder
-const toggleReminder = (id) => {
-  setTasks(tasks.map((task) => task.id === id ? 
-  {...task, reminder : !task.reminder} : task))
-}
+    return data;
+  }
 
-//Add Task
-const addTask = (task) => {
-  // Add ramdomize id
-  const id = Math.floor(Math.random() *10000) + 1;
+  // Delete Task
+  const deleteTask = (id) => {
+    setTasks(tasks.filter((task) => task.id !== id))
+  }
 
-  const newTask = {id, ...task};
+  //Toggle Reminder
+  const toggleReminder = (id) => {
+    setTasks(tasks.map((task) => task.id === id ?
+      { ...task, reminder: !task.reminder } : task))
+  }
 
-  setTasks([...tasks, newTask])
-}
+  //Add Task
+  const addTask = (task) => {
+    // Add ramdomize id
+    const id = Math.floor(Math.random() * 10000) + 1;
+
+    const newTask = { id, ...task };
+
+    setTasks([...tasks, newTask])
+  }
 
   return (
     <div className="App">
       <Header onAdd={() => setshowAddTask(!showAddTask)}
-      showAdd={showAddTask} />
+        showAdd={showAddTask} />
       {showAddTask && <AddTask onAdd={addTask} />}
-      {tasks.length > 0 ? 
-        (<Tasks tasks={tasks} 
+      {tasks.length > 0 ?
+        (<Tasks tasks={tasks}
           onDelete={deleteTask}
           onToggle={toggleReminder} />) :
         ('No Task available')}
