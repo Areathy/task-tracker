@@ -28,6 +28,16 @@ function App() {
     return data;
   }
 
+  // Fetch Task By ID
+  const fetchTasks = async (id) => {
+    const respond = await fetch(`http://localhost:7000/tasks/${id}`,
+    {method: 'GET'});
+    const data = await respond.json();
+    console.log(data)
+
+    return data;
+  }
+
   // Delete Task
   const deleteTask = async (id) => {
     await fetch(` http://localhost:7000/tasks/${id}`,
