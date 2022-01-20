@@ -4,7 +4,8 @@ import Tasks from './components/Tasks'
 import AddTask from "./components/AddTask";
 
 function App() {
-  
+
+  const [showAddTask, setshowAddTask] = useState(false);
   const [tasks, setTasks] = useState([
     {
         "id": 1,
@@ -24,7 +25,7 @@ function App() {
         "day": "Jan 20th at 12:00am",
         "reminder": false
     }
-]) 
+]);
 
 // Delete Task
 const deleteTask = (id) => {
@@ -49,8 +50,9 @@ const addTask = (task) => {
 
   return (
     <div className="App">
-      <Header />
-      <AddTask onAdd={addTask} />
+      <Header onAdd={() => setshowAddTask(!showAddTask)}
+      showAdd={showAddTask} />
+      {showAddTask && <AddTask onAdd={addTask} />}
       {tasks.length > 0 ? 
         (<Tasks tasks={tasks} 
           onDelete={deleteTask}
