@@ -11,6 +11,12 @@
       "text": "Enjoy Life",
       "day": "Jan 20th at 12:00am",
       "reminder": false
+    },
+    {
+      "text": "Holiness",
+      "day": "Every moment",
+      "reminder": true,
+      "id": 4
     }
   ]
 }

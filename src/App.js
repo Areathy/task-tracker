@@ -43,13 +43,25 @@ function App() {
   }
 
   //Add Task
-  const addTask = (task) => {
-    // Add ramdomize id
-    const id = Math.floor(Math.random() * 10000) + 1;
+  const addTask = async (task) => {
+    // // Add ramdomize id
+    // const id = Math.floor(Math.random() * 10000) + 1;
 
-    const newTask = { id, ...task };
+    // const newTask = { id, ...task };
 
-    setTasks([...tasks, newTask])
+    // setTasks([...tasks, newTask])
+
+    const respond = await fetch('http://localhost:7000/tasks',
+    {method: 'POST',
+      headers: {
+        'Content-type': 'application/json'
+      },
+      body: JSON.stringify(task)
+    })
+    
+    const data = await respond.json();
+
+    setTasks([...tasks, data])
   }
 
   return (
