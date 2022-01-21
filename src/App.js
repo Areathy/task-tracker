@@ -1,7 +1,11 @@
 import { useState, useEffect } from "react"
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+
 import Header from './components/Header';
 import Tasks from './components/Tasks'
 import AddTask from "./components/AddTask";
+import Footer from "./components/Footer";
+import About from "./components/About";
 
 function App() {
   // useState
@@ -86,6 +90,8 @@ function App() {
   }
 
   return (
+    <Router>
+
     <div className="App">
       <Header onAdd={() => setshowAddTask(!showAddTask)}
         showAdd={showAddTask} />
@@ -95,7 +101,12 @@ function App() {
           onDelete={deleteTask}
           onToggle={toggleReminder} />) :
         ('No Task available')}
+
+        <Routes><Route path='/about' component={About} /></Routes>
+        <Footer />
     </div>
+
+    </Router>
   );
 }
 
