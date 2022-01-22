@@ -3,15 +3,10 @@ import { Link } from 'react-router-dom'
 const Footer = () => {
   return (
     <footer>
-      {/* <p>Copyright &copy; 2021</p>
-      <a href='/about'>About</a> */}
-      <div id="baby-names">
-	  <p>Stacy</p>
-	  <p>John</p>
-	  <p>Peter</p>
-	</div>
+      <p>Copyright &copy; 2021</p>
+      <Link href='/about'>About</Link>
     </footer>
   )
 }
 
-export default Footer
+export default Footer;
